@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+
+#body {
+    font-family: "Century Gothic", Century, "Calibri Light", Arial;
+    font-size: 15px;
+    background: lavender;
+}
+
+#login {
+    background-color: #d8d8f1;
+    margin-top: 50px; 
+    border-radius: 10px 10px 10px 10px; 
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+}
+
+/*Flecha para hacer la pagina hacia arriba*/
+.ir-arriba{
+  display:none;
+  background-repeat:no-repeat;
+  font-size:20px;
+  color:black;
+  cursor:pointer;
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  z-index:2;
+}
