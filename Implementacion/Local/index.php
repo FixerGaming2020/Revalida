@@ -1,3 +1,10 @@
+
+<?php
+
+session_start();
+$sessionMensaje = "";
+if()
+?>
 <!DOCTYPE html>
 <html>
 
@@ -29,7 +36,7 @@
 </body>
 
 <div class="modal modal-center modal-dark" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">
-<form action="app/procesarLogin.php" method="POST">
+<form method="POST">
 <div class="modal-dialog" role="document">
 <div class="modal-content modal-centered" style="background-color: #4169A0">
 <div class="modal-body">
@@ -38,7 +45,8 @@
 </button>
 <h2 class="modal-title" id="subscribeModalLabel">Acceso a Revalida de Usuarios</h2>
 <br>
-<form action="app/procesarLogin.php" method="POST">
+
+<form method="POST">
 <div class="form-group md-form">
 <input type="text" name="user" id="user" class="form-control input-material" autocomplete="off" required>
 <span class="highlight"></span>

@@ -6,15 +6,15 @@ class Log {
     private $archivo;
 
     function __construct() {
-        $url = LOGS . "\\errores_log.txt";
-        $this->archivo = file_exists($url) ? fopen($url, 'a') : fopen($url, 'w');
+        // $url = LOGS . "\\errores_log.txt";
+        // $this->archivo = file_exists($url) ? fopen($url, 'a') : fopen($url, 'w');
     }
 
     /**
      * Escribe una linea en el archivo indicado.
      * @param string $text Linea de texto a agregar.
      */
-    public function writeLine($text) {
+    public function errorConexion($text) {
         $hour = date("Y-m-d H:i:s");
         $ip = $_SERVER["REMOTE_ADDR"];
         $uri = $_SERVER["REQUEST_URI"];

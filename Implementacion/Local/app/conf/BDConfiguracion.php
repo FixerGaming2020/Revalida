@@ -14,7 +14,7 @@ class BDConfiguracion {
     private $contrasenia;
     
     function __construct() {
-        $url = $_SERVER['DOCUMENT_ROOT']."\Revalida\app\conf\config.xml";
+        $url = $_SERVER['DOCUMENT_ROOT']."\app\conf\config.xml";
         $conexiones = simplexml_load_file($url);
         $this->servidor = $conexiones->conexion[0]->serverName;
         $this->baseDatos = $conexiones->conexion[0]->dataBase;

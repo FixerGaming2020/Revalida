@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conexiones>
+    <conexion>
+        <serverName>192.168.250.144</serverName>
+        <dataBase>BD_Formulario</dataBase>
+        <uid>sa</uid>
+        <pwd>Rytdba086+</pwd>
+    </conexion>
+</conexiones>
