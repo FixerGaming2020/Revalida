@@ -10,17 +10,11 @@ class ActiveDirectory
     private $mensaje;
 
 
-
-
-
-
-    public function __construct($conexion= null, $host = null, $puerto = null, $dominio = null, $mensaje = null)
+    public function __construct( $host = NULL, $puerto = NULL, $dominio = NULL)
     {
-        $this->conexion = $conexion;
         $this->host  = $host;
         $this->puerto  = $puerto;
         $this->dominio = $dominio;
-        $this->mensaje = $mensaje;
     }
 
     public function getConexion()
@@ -83,12 +77,19 @@ class ActiveDirectory
         }
 
         $this->mensaje = "No se pudo establecer la conexion con LDAP(Verifique la configuracion)";
-        Log::escribirError("Error al establecer conexion con LDAP ( HOST: {$this->host}, PORT: {$this->puerto})");
+        Log::errorConexion("Error al establecer conexion con LDAP ( HOST: {$this->host}, PORT: {$this->puerto})");
     }
 
 
-
-
+    public function buscar($usuario, $clave) {
+        $user = $this->dominio . $usuario;
+        if (@ldap_bind($this->conexion, $user, $clave)) {
+            return true;
+        }
+        $this->mensaje = "Usuario no autenticado (verifique los datos)";
+         Log::errorConexion("Usuario no autenticado en LDAP (USUARIO: {$user})");
+        return false;
+    }
 
 
 

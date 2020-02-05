@@ -1,7 +1,7 @@
 <?php
 /* ESTRUCTURA DE DIRECTORIOS DEL SISTEMA */
 
-const ROOT = "D:\\Aplica\\Revalida";
+const ROOT = "C:\\xampp\\htdocs\\Revalida";
 const CONF = "\\Conexion";
 
 

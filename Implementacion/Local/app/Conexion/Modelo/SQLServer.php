@@ -31,7 +31,7 @@ class SQLServer {
             $datosConexion = array("Database" => $baseDatos, "UID" => $usuario, "PWD" => $clave);
             $this->conectar($host, $datosConexion);
         } else {
-            Log::escribirError("Error al leer archivo de configuracion", "__construct()");
+            Log::errorConexion("Error al leer archivo de configuracion", "__construct()");
         }
     }
 
@@ -64,7 +64,7 @@ class SQLServer {
         $this->conexion = sqlsrv_connect($host, $datos);
         if (!$this->conexion) {
             $this->conexion = NULL;
-            Log::escribirError("Error al realizar la conexion a la BD", "conectar($host, {$datos['Database']}, {$datos['UID']}, {$datos['PWD']})");
+            Log::errorConexion("Error al realizar la conexion a la BD", "conectar($host, {$datos['Database']}, {$datos['UID']}, {$datos['PWD']})");
         }
     }
 
@@ -83,7 +83,7 @@ class SQLServer {
         foreach ($errores as $error) {
             $cadena .= $error['code'] . ": " . $error['message'];
         }
-        Log::escribirLineaError($metodo . " / " . $consulta . " / " . $cadena);
+        Log::errorConexion($metodo . " / " . $consulta . " / " . $cadena);
     }
 
     /**

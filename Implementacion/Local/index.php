@@ -3,7 +3,20 @@
 
 session_start();
 $sessionMensaje = "";
-if()
+if(isset($_POST['js-subscribe-btn']))
+{
+    $legajo = $_POST['user'];
+    $clave = $_POST['password'];
+    $controlador = new ControladorConexion();
+    $autorizado = $controlador->verificarUsuarioSistema($legajo,$clave);
+    if($autorizado){
+        header("Location app/principal/Vista/home.php");
+    }else{
+        Log::errorConexion("USUARIO {$legajo} NO AUTORIZADO PARA INGRESAR POR ACTIVE DIRECTORY");
+        $mensaje = $controlador->getMensaje();
+        $sessionMensaje = '<div class="alert alert-danger text-center"><strong>' . $mensaje . '</strong></div>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,14 +24,14 @@ if()
 <head>
     <meta charset="UTF-8">
     <title>Revalida de Usuarios</title>
-    <link rel="icon" href="../../lib/img/estrella.jpg" type="image/gif" sizes="16x16">
+    <link rel="icon" href="lib/img/estrella.jpg" type="image/gif" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="lib/css/estilos.css" />
     <link rel="stylesheet" type="text/css" href="lib/css/bootstrap/bootstrap.css" />
     <script type="text/javascript" charset="utf8" src="lib/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" charset="utf8" src="lib/js/bootstrap/bootstrap.min.js"></script>
 </head>
 
-<body background="../../lib/img/fondo.jfif">
+<body background="lib/img/fondo.jfif">
     <div class="form-row align-items-center mx-auto">
         <div class="col-lg-12 text-center p-2">
         </div>
@@ -48,6 +61,7 @@ if()
 
 <form method="POST">
 <div class="form-group md-form">
+    <?php $sessionMensaje ?>
 <input type="text" name="user" id="user" class="form-control input-material" autocomplete="off" required>
 <span class="highlight"></span>
 <span class="bar"></span>
