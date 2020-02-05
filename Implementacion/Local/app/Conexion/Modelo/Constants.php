@@ -2,8 +2,10 @@
 /* ESTRUCTURA DE DIRECTORIOS DEL SISTEMA */
 
 const ROOT = "C:\\xampp\\htdocs\\Revalida";
-const CONF = "\\Conexion";
-
+const APP = ROOT . "\\app";
+const CON = APP . "\\Conexion";
+const CONF = APP . "\\conf";
+const USU  = APP . "\\Usuario";
 
 
 /* DOMINIO DE ACTIVE DIRECTORY */

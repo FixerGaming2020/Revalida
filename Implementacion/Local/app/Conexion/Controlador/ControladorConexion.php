@@ -5,7 +5,6 @@ class ControladorConexion
 {
 
 
-    private $mensaje;
    
     /**
      * Realiza la verificacion del usuario consultando sus datos en el servidor
@@ -55,10 +54,7 @@ class ControladorConexion
     }
 
 
-    public function getMensaje()
-    {
-        return $this->$mensaje;
-    }
+   
     
 
 
