@@ -133,10 +133,12 @@ class Usuario
 
     public function obtener(){
         if($this->id){
+           
             $consulta = "SELECT * FROM usuario WHERE id = ?";
             $fila = SQLServer:: instancia()->obtener($consulta, array($this->id));
             if(gettype($fila) == "array"){
-                $this->nombre = $fila['']
+                $this->nombre = $fila['nombre'];
+
             }
 
 

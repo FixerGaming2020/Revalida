@@ -3,9 +3,6 @@
 
 class ControladorConexion
 {
-
-
-   
     /**
      * Realiza la verificacion del usuario consultando sus datos en el servidor
      * de Active Directory y en la base de datos del sistema. Se deniega el acceso
@@ -24,7 +21,7 @@ class ControladorConexion
                 $_SESSION['usuario'] = $usuario;
                 return true;
             }
-            $this->mensaje = "Usuario no autorizado por CAP";
+            $this->mensaje = "Usuario no autorizado por Revalida";
             return false;
         }
         return $autorizadoAD;

@@ -21,7 +21,7 @@ class ConfiguracionBD {
     private $url;
 
     public function __construct() {
-        $this->url = CONF . "\\config.xml";
+        $this->url = CON . "\\config.xml";
     }
 
     public function getHost() {
