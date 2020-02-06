@@ -8,12 +8,13 @@ session_start();
 
 $sessionMensaje = "";
 
+// Consulto si se apreto el boton de ingresar
 if (isset($_POST['btnIngreso'])) {
-    print_r("ENTRO");
 
-    $legajo = $_POST['user'];
-    $clave = $_POST['password'];
-    $controlador = new ControladorConexion();
+    print_r("COMPRUEBO QUE ENTRO");
+    $legajo = $_POST['user']; //Obtengo el usuario
+    $clave = $_POST['password']; //Obtengo el Password
+    $controlador = new ControladorConexion(); //creo un objeto ContrladorConexion
     $autorizado = $controlador->verificarUsuarioSistema($legajo, $clave);
     if ($autorizado) {
         print_r("ENTRO");
@@ -46,55 +47,18 @@ if (isset($_POST['btnIngreso'])) {
         </div>
     </div>
     <br><br><br><br><br><br><br><br><br>
-  
     <div class="login">
         <div class="login-triangle"></div>
 
         <h2 class="login-header">ingresar</h2>
 
+        <!-- ingreso el nombre de Usuario y La contraseña -->
         <form class="login-container" method="POST">
-            <p><input type="text" id="user" placeholder="Usuario"  required></p>
-            <p><input type="password" id="password" placeholder="Contraseña" required></p>
-            <p><input type="submit" id="btnIngreso" value="Ingresar"></p>
+            <p><input type="text" id="user" name="user" placeholder="Usuario" required></p>
+            <p><input type="password" id="password" name="password" placeholder="Contraseña" required></p>
+            <p><input type="submit" id="btnIngreso" name="btnIngreso" value="Ingresar"></p>
         </form>
     </div>
 </body>
-<!-- 
-<div class="modal modal-center modal-dark" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content modal-centered" style="background-color: #4169A0">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="pe-7s-close pe-2x"></i></span>
-                </button>
-                <h2 class="modal-title" id="subscribeModalLabel">Acceso a Revalida de Usuarios</h2>
-                <br>
-
-                <form method="POST">
-                    <div class="form-group md-form">
-                        <?php $sessionMensaje ?>
-                        <input type="text" name="user" id="user" class="form-control input-material" autocomplete="off" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label style="color:BLACK;" size="8">LEGAJO</label>
-                    </div>
-                    <div class="form-group md-form">
-                        <input type="password" name="password" id="password" class="form-control input-material" autocomplete="off" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label style="color:BLACK;" size="8">CONTRASE&Ntilde;A</label>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="submit" name="btnIngreso" id="btnIngreso" class="btn btn-outline-success btn-block" title="Ingresar a CAP" value="INGRESAR">
-                        <div id="js-subscribe-result" data-success-msg="Success, Please check your email." data-error-msg="Oops! Something went wrong"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
 
 </html>

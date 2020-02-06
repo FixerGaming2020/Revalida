@@ -67,7 +67,7 @@ class ActiveDirectory
         $this->mensaje = $mensaje;
     }
 
-
+    //LA FUNCION CONECTAR VA A HACER LA CONEXION CON LDAP  DONDE MANDA POR PARAMETRO EL HOST Y EL PUERTO 
     public function conectar()
     {
         $this->conexion = ldap_connect($this->host,$this->puerto);
@@ -75,7 +75,6 @@ class ActiveDirectory
             ldap_set_option($this->conexion, LDAP_OPT_PROTOCOL_VERSION, 3);
             return true;
         }
-
         $this->mensaje = "No se pudo establecer la conexion con LDAP(Verifique la configuracion)";
         Log::errorConexion("Error al establecer conexion con LDAP ( HOST: {$this->host}, PORT: {$this->puerto})");
     }

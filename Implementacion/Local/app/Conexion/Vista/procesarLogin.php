@@ -11,7 +11,7 @@ $_SESSION['ingresa'] = true;
 /* Recibe los datos del formulario */
 $user = $_POST['user'];
 $pass = $_POST['password'];
-$redireccion = "../index.php";
+$redireccion = "../../../index.php";
 
 try {
     $ldap_connection = ldap_connect(HOST_LDAP, PORT_LDAP);

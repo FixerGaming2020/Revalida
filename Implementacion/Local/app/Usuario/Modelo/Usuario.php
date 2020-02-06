@@ -138,11 +138,15 @@ class Usuario
             $fila = SQLServer:: instancia()->obtener($consulta, array($this->id));
             if(gettype($fila) == "array"){
                 $this->nombre = $fila['nombre'];
-
+                $this->estado = $fila['estado'];
+                return $this->obtenerPerfil($fila['perfil']);
             }
 
-
         }
+    }
+
+    public function obtenerPerfil($idPerfil){
+        $perfil = new Rol($idPerfil);
     }
 
 }

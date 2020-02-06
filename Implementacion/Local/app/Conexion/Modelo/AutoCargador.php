@@ -2,6 +2,7 @@
 
 class AutoCargador {
 
+    
     public static function cargarModulos() {
         spl_autoload_register(function($className) {
             $modulos = array(CON,CONF,USU);

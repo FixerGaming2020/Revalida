@@ -43,10 +43,10 @@ class ConfiguracionBD {
     public function leerConfiguracion() {
         if (file($this->url)) {
             $configuracion = simplexml_load_file($this->url);
-            $this->host = $configuracion->conf[0]->serverName;
-            $this->baseDatos = $configuracion->conf[0]->dataBase;
-            $this->usuario = $configuracion->conf[0]->uid;
-            $this->password = $configuracion->conf[0]->pwd;
+            $this->host = $configuracion->conexion[0]->serverName;
+            $this->baseDatos = $configuracion->conexion[0]->dataBase;
+            $this->usuario = $configuracion->conexion[0]->uid;
+            $this->password = $configuracion->conexion[0]->pwd;
             return true;
         }
         Log::errorConexion("Error al leer archivo de configuracion en $this->url", "leerConfiguracion()");
