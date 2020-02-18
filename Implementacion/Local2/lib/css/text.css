@@ -1,0 +1,94 @@
+HTML CSSResult
+* { box-sizing:border-box; }
+
+.group            { 
+  position:relative; 
+  margin-bottom:40px; 
+}
+#input1{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+  background-color: #fafafa;
+}
+#input1:focus         { outline:none; }
+
+/* LABEL ======================================= */
+#label1                {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute; /*ME PERMITE AGREGAR EL LABEL DENTRO DEL INPUT, PARA QUE QUEDE MEJOR*/
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+#input1:disabled ~ #label1, #input1:valid ~ #label1        { /*La pseudo-clase :focus CSS representa un elemento (como una entrada de formulario) que ha recibido el foco. Generalmente se activa cuando el usuario hace clic, toca un elemento o lo selecciona con la tecla "Tab" del teclado.*/
+  top:-20px;                                               /*La pseudo-clase :valid de CSS representa cualquier elemento <input> u otro elemento <form> cuyo contenido se valide satisfactoriamente.*/
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* barra que aparece cuando cliqueas en el input  ================================= */
+.bar    { position:relative; display:block; width:300px; }
+.bar:before, .bar:after     {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:40%;
+}
+.bar:after {
+  right:50%; 
+}
+
+#input1:focus ~ .bar:before, #input1:focus ~ .bar:after {
+  width:50%;
+}
+
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}  
+
+#input1:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+
+/* ANIMACION ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+
