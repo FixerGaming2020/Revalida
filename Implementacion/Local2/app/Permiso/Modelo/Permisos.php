@@ -10,7 +10,7 @@ class Permisos {
 
     public function listarMenu($idPerfil) {
         $consulta = "SELECT id, nombre FROM permiso PER INNER JOIN rol_permiso "
-                . "REL ON REL.id_rol = PER.id AND REL.id_permiso = ? "
+                . "REL ON REL.id_permiso = PER.id AND REL.id_rol = ? "
                 . "WHERE PER.nivel = 1 ORDER BY nombre";
         $resultado = SQLServer::instancia()->seleccionar($consulta, array(&$idPerfil));
         $this->mensaje = SQLServer::instancia()->getMensaje();

@@ -15,7 +15,7 @@ if (isset($_POST['btnIngreso'])) {
     $autorizado = $controlador->verificarUsuarioSistema($legajo, $clave);
     if ($autorizado) {
         Log::guardarConexion("INGRESO", "USUARIO AUTORIZADO PARA INGRESAR");
-        header("Location: app/Conexion/Vista/home.php");
+        header("Location:app/Principal/Vista/Home.php");
     } else {
         $mensaje = $controlador->getMensaje();
         Log::guardarError("INGRESO", $mensaje);

@@ -146,6 +146,7 @@ class Usuario {
                 return $this->obtenerPerfil($fila['id_rol']);
             }
             $this->mensaje = "No se obtuvo la información del usuario";
+            Log::guardarError("INGRESO", $this->mensaje);
             return 1;
         }
         $this->mensaje = "No se pudo hacer referencia al usuario";
@@ -155,8 +156,11 @@ class Usuario {
     private function obtenerPerfil($idRol) {
         $perfil = new Rol($idRol);
         $resultado = $perfil->obtener();
-        $this->perfil = ($resultado == 2) ? $perfil : NULL;
+        $this->rol = ($resultado == 2) ? $perfil : NULL;
         $this->mensaje = ($resultado == 2) ? $this->mensaje : "No se pudo obtener el rol";
+        if($this->mensaje == "No se pudo obtener el rol"){
+            Log::guardarError("Error",$this->mensaje);
+        }
         return $resultado;
     }
 

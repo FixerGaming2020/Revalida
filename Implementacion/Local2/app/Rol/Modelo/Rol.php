@@ -4,13 +4,13 @@ class Rol {
 
     private $id;
     private $nombre;
-    private $permisos;
+    private $permiso;
     private $mensaje;
 
-    public function __construct($id = null, $nombre = null, $permisos = null) {
+    public function __construct($id = null, $nombre = null, $permiso = null) {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->permisos = $permisos;
+        $this->permiso = $permiso;
     }
 
     public function getId() {
@@ -34,49 +34,49 @@ class Rol {
     }
 
     public function getPermisos() {
-        return $this->permisos;
+        return $this->permiso;
     }
 
-    public function setPermiso($permisos) {
-        $this->permisos = $permisos;
+    public function setPermisos($permiso) {
+        $this->permiso = $permiso;
     }
 
-    public function crear() {
-        if ($this->nombre && $this->permisos) {
-            $consulta = "INSERT INTO rol OUTPUT INSERTED.id VALUES (?, ?)";
-            $datos = array(&$this->nombre);
-            $creacion = SQLServer::instancia()->insertar($consulta, $datos);
-            $this->mensaje = utf8_encode($this->nombre) . ": " . SQLServer::instancia()->getMensaje();
-            if ($creacion == 2) {
-                $this->id = SQLServer::instancia()->getUltimoId();
-                $creaRelacion = PerfilPermiso::crear($this->id, $this->permisos);
-                $this->mensaje = ($creaRelacion == 2) ? $this->mensaje : PerfilPermiso::getMensaje();
-                return $creaRelacion;
-            }
-            return $creacion;
-        }
-        $this->mensaje = "No se recibieron los campos obligatorios";
-        return 0;
-    }
+    // public function crear() {
+    //     if ($this->nombre && $this->permisos) {
+    //         $consulta = "INSERT INTO rol OUTPUT INSERTED.id VALUES (?, ?)";
+    //         $datos = array(&$this->nombre);
+    //         $creacion = SQLServer::instancia()->insertar($consulta, $datos);
+    //         $this->mensaje = utf8_encode($this->nombre) . ": " . SQLServer::instancia()->getMensaje();
+    //         if ($creacion == 2) {
+    //             $this->id = SQLServer::instancia()->getUltimoId();
+    //             $creaRelacion = PerfilPermiso::crear($this->id, $this->permisos);
+    //             $this->mensaje = ($creaRelacion == 2) ? $this->mensaje : PerfilPermiso::getMensaje();
+    //             return $creaRelacion;
+    //         }
+    //         return $creacion;
+    //     }
+    //     $this->mensaje = "No se recibieron los campos obligatorios";
+    //     return 0;
+    // }
 
-    public function modificar() {
-        if ($this->id && $this->nombre && $this->permisos) {
-            $consulta = "UPDATE rol SET nombre = ? WHERE id = ?";
-            $datos = array(&$this->nombre, &$this->id);
-            $modificacion = SQLServer::instancia()->modificar($consulta, $datos);
-            $this->mensaje = utf8_encode($this->nombre) . ": " . SQLServer::instancia()->getMensaje();
-            if ($modificacion == 2) {
-                $sborrar = PerfilPermiso::borrar($this->id);
-                $this->mensaje = ($sborrar == 2) ? $this->mensaje : "Permisos: " . RolPermiso::getMensaje();
-                $screar = PerfilPermiso::crear($this->id, $this->permisos);
-                $this->mensaje = ($screar == 2) ? $this->mensaje : "Permisos: " . RolPermiso::getMensaje();
-                return ($sborrar == 2 && $screar == 2) ? 2 : 1;
-            }
-            return $modificacion;
-        }
-        $this->mensaje = "No se recibieron los campos obligatorios";
-        return 0;
-    }
+    // public function modificar() {
+    //     if ($this->id && $this->nombre && $this->permisos) {
+    //         $consulta = "UPDATE rol SET nombre = ? WHERE id = ?";
+    //         $datos = array(&$this->nombre, &$this->id);
+    //         $modificacion = SQLServer::instancia()->modificar($consulta, $datos);
+    //         $this->mensaje = utf8_encode($this->nombre) . ": " . SQLServer::instancia()->getMensaje();
+    //         if ($modificacion == 2) {
+    //             $sborrar = PerfilPermiso::borrar($this->id);
+    //             $this->mensaje = ($sborrar == 2) ? $this->mensaje : "Permisos: " . RolPermiso::getMensaje();
+    //             $screar = PerfilPermiso::crear($this->id, $this->permisos);
+    //             $this->mensaje = ($screar == 2) ? $this->mensaje : "Permisos: " . RolPermiso::getMensaje();
+    //             return ($sborrar == 2 && $screar == 2) ? 2 : 1;
+    //         }
+    //         return $modificacion;
+    //     }
+    //     $this->mensaje = "No se recibieron los campos obligatorios";
+    //     return 0;
+    // }
 
     public function obtener() {
         if ($this->id) {
@@ -84,7 +84,7 @@ class Rol {
             $fila = SQLServer::instancia()->obtener($consulta, array(&$this->id));
             if (gettype($fila) == "array") {
                 $this->nombre = $fila['nombre'];
-                $this->permisos = $this->obtenerPermisos();
+                $this->permiso = $this->obtenerPermisos();
                 return 2;
             }
             $this->mensaje = "No se obtuvo la información del perfil";
@@ -104,10 +104,13 @@ class Rol {
                 $arregloSubmenu = array();
                 if (gettype($resultadoSM) == 'resource') {
                     while ($submenu = sqlsrv_fetch_array($resultadoSM, SQLSRV_FETCH_ASSOC)) {
-                        $arregloSubmenu[] = array($submenu['id'], $submenu['titulo'], $submenu['link']);
+                        $arregloSubmenu[] = array($submenu['id'], $submenu['nombre'], $submenu['link']);
+                       // print_r($arregloSubmenu);
                     }
-                    $arregloMenu[] = array($menu['id'], $menu['titulo'], $arregloSubmenu);
+                    $arregloMenu[] = array($menu['id'], $menu['nombre'], $arregloSubmenu);
                 }
+                // $arregloMenu[] = array($menu['id'], $menu['nombre']);
+
             }
         }
         return $arregloMenu;
