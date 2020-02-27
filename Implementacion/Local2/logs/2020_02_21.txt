@@ -1,0 +1,7 @@
+[HORA: 15:37:53][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/Principal/Vista/home.php][No se pudo guardar actividad por falta de datos]
+[HORA: 17:40:33][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/FormularioUsuario/Vista/NuevaAlta.php][No se pudo guardar actividad por falta de datos]
+[HORA: 17:40:39][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/FormularioUsuario/Vista/NuevaAlta.php][No se pudo guardar actividad por falta de datos]
+[HORA: 17:41:00][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/FormularioUsuario/Vista/NuevaAlta.php][No se pudo guardar actividad por falta de datos]
+[HORA: 18:22:47][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/FormularioUsuario/Vista/NuevaAlta.php][No se pudo guardar actividad por falta de datos]
+[HORA: 18:22:54][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/FormularioUsuario/Vista/NuevaAlta.php][No se pudo guardar actividad por falta de datos]
+[HORA: 19:41:44][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/FormularioUsuario/Vista/NuevaAlta.php][No se pudo guardar actividad por falta de datos]

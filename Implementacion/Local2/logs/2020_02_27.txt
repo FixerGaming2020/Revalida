@@ -1,0 +1,1 @@
+[HORA: 20:56:49][USUARIO: ][IP: ::1][SCRIPT: /revalida/app/FormularioUsuario/Vista/NuevaAlta.php][No se pudo guardar actividad por falta de datos]
